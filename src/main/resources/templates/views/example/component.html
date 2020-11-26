@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      th:with="metaTit='테스트'">
+<head>
+</head>
+<body>
+<!-- content -->
+<th:block layout:fragment="content">
+
+<div id="app">
+    <div>
+        <h2>전역 컴포넌트</h2>
+
+        <h4>String 컴포넌트</h4>
+        <ex1-string-component></ex1-string-component>
+
+        <h4>template 컴포넌트</h4>
+        <ex2-template-component></ex2-template-component>
+
+        <h4>inline 컴포넌트</h4>
+        <ex3-inline-example inline-template>
+            <div class="module_tab" id="tab" data-module-tab="wrap">
+                <ul>
+                    <li v-for="(item, index) in items">
+                        <button @click="btnClick( index )" type="button"><span>{{ item.button }}</span></button>
+                    </li>
+                </ul>
+                <div class="module_tab_contents">
+                    {{ message }}
+                </div>
+            </div>
+        </ex3-inline-example>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>전역 컴포넌트</h2>
+
+        <h4>String 컴포넌트</h4>
+        <ex4-component></ex4-component>
+
+        <h4>template 컴포넌트</h4>
+        <ex5-component></ex5-component>
+    </div>
+</div><!-- //vue app id -->
+
+
+<!-- ex2) ex2 컴포넌트 -->
+<script type="text/x-template" id="ex2-template">
+    <div class="module_tab" data-module-tab="wrap">
+        <ul>
+            <li v-for="(item, index) in items">
+                <button @click="btnClick( index )" type="button"><span>{{ item.button }}</span></button>
+            </li>
+        </ul>
+        <div class="module_tab_contents">
+            {{ message }}
+        </div>
+    </div>
+</script>
+
+</th:block>
+<!-- //content -->
+
+<!-- script -->
+<th:block layout:fragment="custom_js">
+    <script th:src="@{/assets/views/example/component.js}"></script>
+</th:block>
+<!-- //script -->
+
+</body>
+</html>

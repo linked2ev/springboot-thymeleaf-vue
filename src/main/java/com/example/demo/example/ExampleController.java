@@ -9,10 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/views/example/")
 public class ExampleController {
 
-    @GetMapping("template")
-    public ModelAndView template() {
+    @GetMapping("component")
+    public ModelAndView component() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("views/example/template");
+        mv.setViewName("views/example/component");
         return mv;
     }
 }
