@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/defaultLayout}"
+      th:with="metaTit='list-checkbox'">
+<head>
+</head>
+<body>
+<!-- content -->
+<th:block layout:fragment="content">
+
+<div id="app">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">
+                <input type="checkbox"
+                       v-model="allChecked"
+                       @click="checkedAll($event.target.checked)"
+                >
+            </th>
+            <th scope="col">NO.</th>
+            <th scope="col">제목</th>
+            <th scope="col">내용</th>
+            <th scope="col">조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(item, index) in boardList" :key="item.boardId">
+            <td>
+                <input type="checkbox"
+                       :id="'check_' + item.boardId"
+                       :value="item.boardId"
+                       v-model="item.selected"
+                       @change="selected($event)"
+                >
+            </td>
+            <td>{{index}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.contents}}</td>
+            <td>{{item.hits}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div><!-- //vue app id -->
+
+</th:block>
+<!-- //content -->
+
+<!-- script -->
+<th:block layout:fragment="custom_js">
+    <script th:src="@{/assets/views/example/list-checkbox.js}"></script>
+</th:block>
+<!-- //script -->
+
+</body>
+</html>
